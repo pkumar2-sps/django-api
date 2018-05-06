@@ -1,10 +1,10 @@
-version: '2'  
-services:  
+version: '2'
+services:
   nginx:
     image: nginx:latest
-    container_name: nz01
+    container_name: nginx_container
     ports:
-      - "9000:8000"
+      - "7001:8000"
     volumes:
       - ./web:/src
       - ./config/nginx:/etc/nginx/conf.d
@@ -12,14 +12,20 @@ services:
       - web
   web:
     build: .
-    container_name: dz01
+    container_name: django_container
     depends_on:
       - db
     volumes:
       - ./web:/src
     expose:
       - "8000"
-   
+    links:
+      - redis
   db:
     image: postgres:latest
- 
+    container_name: postgres_container
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+     - '6379:6379'
