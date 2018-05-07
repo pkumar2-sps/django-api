@@ -79,29 +79,34 @@ services:
 
 
 Execute this command to install the project:
+1.  Clone the project repository
+```bash
+git clone --depth=1 https://github.com/prakashsharmacs24/django-api.git
+cd django-api
+```
 
-1.  Builds the images define in the docker-compose.yml
+2.  Builds the images define in the docker-compose.yml
 ```bash
 docker-compose build
 ```
 
-2.  Create your containers
+3.  Create your containers
 
 
 ```bash
 docker-compose up -d
 ```
-3.  Make  Migration
+4.  Make  Migration
 
 
 ```bash
 docker-compose run web python /src/manage.py makemigrations
 docker-compose run web python /src/manage.py migrate
 ```
-3.  Generate Label
+5.  Generate Label
 We can confirm it works by navigating to http://127.0.0.1:7001/api/v1/reports/?limit=1 where you’ll see the pdf label as before.
 
-3. Close Docker container
+6. Close Docker container
 When you’re done, don’t forget to close down your Docker container.
 ```bash
 docker-compose down
