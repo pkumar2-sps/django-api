@@ -4,13 +4,13 @@ pipeline:
     environment:
       - DJANGO_SETTINGS_MODULE=init_django.settings.dev
     commands:
-      - easy_install pip
-      - python setup.py install
+      - pip install --upgrade setuptools
       - pip install -U pip==9.0.3
       #- pip install --upgrade pip
       - pip install tox
-      - make env
-      - make dev
+      #- make env
+      #- make dev
+      - pip install -r base.pip
       - make run
       - pytest
 
