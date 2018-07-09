@@ -2,7 +2,7 @@ pipeline:
   test:
     image: python:3.5.2
     environment:
-      - DJANGO_SETTINGS_MODULE=init_django.settings.dev
+      - DJANGO_SETTINGS_MODULE=web.settings
     commands:
       - pip install --upgrade setuptools
       - pip install -U pip==9.0.3
