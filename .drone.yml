@@ -8,7 +8,7 @@ pipeline:
       - pip install -U pip==9.0.3
       #- pip install --upgrade pip
       - pip install tox
-      #- make env
+      - make env
       #- make dev
       - pip install -r base.pip
       - make run
