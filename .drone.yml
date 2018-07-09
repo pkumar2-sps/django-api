@@ -1,0 +1,28 @@
+pipeline:
+  test:
+    image: python:3.5.2
+    environment:
+      - DJANGO_SETTINGS_MODULE=init_django.settings.dev
+    commands:
+      - pip install tox
+      - pip install tox
+      - make env
+      - make dev
+      - make run
+      - pytest
+
+  
+  slack:
+     image: plugins/slack
+     webhook: https://hooks.slack.com/services/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
+     channel: developers
+     username: pkumar2
+     when:
+       status: [ success, changed, failure ]       
+     template: |
+      {{#success build.status}}
+        build {{build.number}} succeeded. Good job.
+      {{else}}
+        build {{build.number}} {{build.link_url}} failed. Fix me please.
+      {{/success}}
+

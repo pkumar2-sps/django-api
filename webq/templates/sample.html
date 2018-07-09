@@ -1,0 +1,120 @@
+{% load static %}
+<head>
+    <title>Label API</title>
+    <style>
+
+#wrapper {
+  font-size: .8em;
+  display:table;
+  border-top: 2px solid black;
+  width:100%;
+}
+#address_row{
+  display:table-row;
+}
+#shipping_address {
+  display:table-cell;
+  border-right: 2px solid black;
+  padding-left: 5%;
+  width:45%;
+}
+#billing_address {
+  display:table-cell;
+  padding-left: 5%;
+  width:45%;
+}
+#items {
+  display:table-cell;
+  background-color:#bada55;
+}
+
+table {
+    border-top: 2px solid black;
+    font-family: arial, sans-serif;
+    border-top: 2px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border-top: 2px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr{
+  /* border-top: 1px solid black; */
+}
+
+
+td:not(:first-child){
+  border-left: 2px solid black;
+}
+
+</style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="address_row">
+      <div id="shipping_address">
+        <h3>Shipping Address</h3>
+      <h3>{{ first_name }} {{ last_name }}</h3>
+      <p>1329 40th St Apt A</p>
+      <p>Orlando Central Pkwy</p>
+      <p>Orlando, PO Box 2769</p>
+      <p>Florida</p>
+
+      </div>
+      <div id="billing_address">
+
+        <h3>Biling Address</h3>
+      <h3>{{ first_name }} {{ last_name }}</h3>
+      <p>1329 40th St Apt A</p>
+      <p>Orlando Central Pkwy</p>
+      <p>Orlando, PO Box 2769</p>
+      <p>Florida</p>
+
+        <br><br></div>
+    </div>
+
+    </div>
+    <div>
+      <table>
+  <tr>
+    <th colspan="2">Product</th>
+    <th>Qty</th>
+    <th>Price</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td colspan="2">iMac</td>
+    <td>1</td>
+    <td>10</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td colspan="2">Apple Watch</td>
+    <td>1</td>
+    <td>10</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td colspan="2">Apple Tv</td>
+    <td>1</td>
+    <td>10</td>
+    <td>10</td>
+  </tr>
+
+
+</table>
+  </div>
+  <img src="{% static "images/header-logo.png" %}" alt="{% static "images/background.png" %}">
+  <br/>
+  <img src="{{ request.get_host }}{% static 'images/header-logo.png' %}" alt="{{ request.get_host }}{% static 'images/header-logo.png' %}">
+
+
+
+
+
+</body>

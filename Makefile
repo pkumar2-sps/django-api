@@ -1,38 +1,45 @@
-build:
-	docker-compose build
+ENV=./env/bin
+SHELL := /bin/bash
+PYTHON=$(ENV)/python
+PIP=$(ENV)/pip
+MANAGE=$(PYTHON) manage.py
 
-up:
-	docker-compose up -d
+collect_static:
+	$(MANAGE) collectstatic --noinput --clear --link
 
-up-non-daemon:
-	docker-compose up
+flake8:
+	$(ENV)/flake8
 
-start:
-	docker-compose start
+migrate:
+	$(MANAGE) migrate
 
-stop:
-	docker-compose stop
+dev:
+	$(PIP) install -r requirements/development.txt --upgrade
 
-restart:
-	docker-compose stop && docker-compose start
+prod:
+	$(PIP) install -r requirements/production.txt --upgrade
 
-shell-nginx:
-	docker exec -ti nz01 bash
+env:
+	virtualenv -p `which python3` env
 
-shell-web:
-	docker exec -ti dz01 bash
+clean:
+		pyclean .
+		find . -name "*.pyc" -exec rm -rf {} \;
+		rm -rf *.egg-info
 
-shell-db:
-	docker exec -ti pz01 bash
+test:
+	$(MANAGE) test
 
-log-nginx:
-	docker-compose logs nginx  
+run:
+	$(MANAGE) runserver 0.0.0.0:8000
 
-log-web:
-	docker-compose logs web  
+freeze:
+	mkdir -p requirements
+	$(PIP) freeze > requirements/base.txt
 
-log-db:
-	docker-compose logs db
 
-collectstatic:
-	docker exec dz01 /bin/sh -c "python manage.py collectstatic --noinput"  
+# General
+REPO=nuxis/p0sX-server
+
+sign:
+	drone sign $(REPO)
