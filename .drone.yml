@@ -11,8 +11,7 @@ pipeline:
       - make env
       - make dev_pip
       - pip install -r requirements.pip
-      - make run &
-      - pytest
+      - make run & ; pytest
 
   
   slack:
