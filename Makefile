@@ -34,7 +34,7 @@ test:
 	$(MANAGE) test
 
 run:
-	$(MANAGE) runserver 0.0.0.0:8000 & pytest
+	$(MANAGE) runserver 127.0.0.1:8000 & pytest
 
 freeze:
 	mkdir -p requirements
