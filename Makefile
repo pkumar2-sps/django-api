@@ -13,6 +13,8 @@ flake8:
 migrate:
 	$(MANAGE) migrate
 
+dev_pip:
+        $(PIP) install -r requirements.pip --upgrade 
 dev:
 	$(PIP) install -r requirements/development.txt --upgrade
 
