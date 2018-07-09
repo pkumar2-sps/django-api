@@ -1,6 +1,6 @@
 ENV=./env/bin
 SHELL := /bin/bash
-PYTHON=$(ENV)/python
+PYTHON=$(ENV)/python3
 PIP=$(ENV)/pip3
 MANAGE=$(PYTHON) manage.py
 
