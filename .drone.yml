@@ -11,7 +11,7 @@ pipeline:
       - make env
       - make dev_pip
       - pip install -r requirements.pip
-      - make run
+      - make run &
       - pytest
 
   
