@@ -10,7 +10,7 @@ pipeline:
       - pip install tox
       - make env
       #- make dev
-      - pip install -r base.pip
+      - pip install -r requirements.pip
       - make run
       - pytest
 
