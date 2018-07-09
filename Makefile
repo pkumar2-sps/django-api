@@ -1,7 +1,7 @@
 ENV=./env/bin
 SHELL := /bin/bash
 PYTHON=$(ENV)/python
-PIP=$(ENV)/pip
+PIP=pip
 MANAGE=$(PYTHON) manage.py
 
 collect_static:
